@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LifeLink - AI Blood Donor Matching</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        <span class="heart-logo">♥</span>
+        <span>Life<span>Link</span></span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#register">Become a Donor</a>
+        <a href="#matching">Find Donor</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            AI POWERED BLOOD NETWORK
+        </div>
+
+        <h1>
+            Every Drop<br>
+            <span>Connects a Life.</span>
+        </h1>
+
+        <p>
+            LifeLink uses intelligent blood-group compatibility,
+            location and availability to connect patients with
+            suitable blood donors quickly.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#matching" class="btn primary">
+                Find a Donor
+            </a>
+
+            <a href="#register" class="btn secondary">
+                Become a Donor
+            </a>
+        </div>
+
+    </div>
+
+
+    <!-- HEART -->
+    <div class="hero-visual">
+
+        <div class="heart-container">
+
+            <svg class="heart-svg"
+                 viewBox="0 0 200 200"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <defs>
+
+                    <linearGradient id="heartGradient"
+                                    x1="0%"
+                                    y1="0%"
+                                    x2="100%"
+                                    y2="100%">
+
+                        <stop offset="0%"
+                              stop-color="#ff4d6d"/>
+
+                        <stop offset="100%"
+                              stop-color="#b5173f"/>
+
+                    </linearGradient>
+
+                </defs>
+
+                <path
+                    class="heart-path"
+                    fill="url(#heartGradient)"
+                    d="M100 175
+                       C85 160 25 125 25 75
+                       C25 40 65 25 100 60
+                       C135 25 175 40 175 75
+                       C175 125 115 160 100 175Z"/>
+            </svg>
+
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring ring-two"></div>
+
+        </div>
+
+        <div class="ecg">
+            ────╱╲────╱╲╱╲────╱╲────
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+    <div class="stat-card">
+
+        <h2 id="donorCount">
+            {{ donor_count }}
+        </h2>
+
+        <p>Registered Donors</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h2>8</h2>
+
+        <p>Blood Groups</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h2 class="active">
+            ● Active
+        </h2>
+
+        <p>System Status</p>
+
+    </div>
+
+</section>
+
+
+<!-- DONOR REGISTRATION -->
+<section class="section" id="register">
+
+    <div class="section-heading">
+
+        <span>01</span>
+
+        <div>
+            <h2>Become a Donor</h2>
+
+            <p>
+                Register your details and help save lives.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <form id="donorForm">
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Age</label>
+                    <input
+                        type="number"
+                        id="age"
+                        placeholder="Age"
+                        min="18"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Gender</label>
+
+                    <select id="gender" required>
+
+                        <option value="">
+                            Select gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+                    <label>Blood Group</label>
+
+                    <select id="blood_group" required>
+
+                        <option value="">
+                            Select blood group
+                        </option>
+
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Location</label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="City / Area"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Phone</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Phone number"
+                        required>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email address">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Last Donation Date</label>
+
+                    <input
+                        type="date"
+                        id="last_donation">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Availability</label>
+
+                    <select id="availability" required>
+
+                        <option value="">
+                            Select availability
+                        </option>
+
+                        <option value="Available">
+                            Available
+                        </option>
+
+                        <option value="Unavailable">
+                            Unavailable
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <label class="consent">
+
+                <input type="checkbox" id="consent" required>
+
+                <span>
+                    I agree to share my details for blood donation
+                    matching.
+                </span>
+
+            </label>
+
+
+            <button type="submit" class="submit-btn">
+                Register as Donor →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- MATCHING -->
+<section class="section matching-section"
+         id="matching">
+
+    <div class="section-heading">
+
+        <span>02</span>
+
+        <div>
+
+            <h2>Find a Blood Donor</h2>
+
+            <p>
+                Let our AI matching system find compatible donors.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="form-grid">
+
+            <div class="input-group">
+
+                <label>Required Blood Group</label>
+
+                <select id="requestBlood">
+
+                    <option value="">
+                        Select blood group
+                    </option>
+
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB+</option>
+                    <option>AB-</option>
+                    <option>O+</option>
+                    <option>O-</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Patient Location</label>
+
+                <input
+                    type="text"
+                    id="requestLocation"
+                    placeholder="Enter city / area">
+
+            </div>
+
+        </div>
+
+
+        <label class="emergency">
+
+            <input
+                type="checkbox"
+                id="emergency">
+
+            <span>
+                Emergency Request
+            </span>
+
+        </label>
+
+
+        <button
+            type="button"
+            class="submit-btn"
+            onclick="findDonors()">
+
+            Find Compatible Donors →
+
+        </button>
+
+
+        <div id="results"
+             class="results">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="logo">
+        <span class="heart-logo">♥</span>
+        Life<span>Link</span>
+    </div>
+
+    <p>
+        AI Based Blood Donor Matching System
+    </p>
+
+    <p>
+        Every drop matters. Every donor matters.
+    </p>
+
+</footer>
+
+
+<script src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+</html>
